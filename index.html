@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>contenteditable-events</title>
+    <script defer src="index.js"></script>
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        margin: 0;
+        padding: 4px;
+        width: 100%;
+      }
+      p {
+        margin: 0;
+      }
+      h2 {
+        font-size: 16px;
+        font-weight: normal;
+      }
+      textarea {
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+      }
+      .editor {
+        border-radius: 4px;
+        border: 1px solid black;
+        box-sizing: border-box;
+        flex: 1;
+        overflow: scroll;
+        padding: 2px 4px;
+      }
+      .tools {
+        border: 1px solid gray;
+        box-sizing: border-box;
+        display: flex;
+        flex: 1;
+        padding: 2px 4px;
+      }
+      .events {
+        flex: 1;
+        overflow: scroll;
+        padding: 2px;
+      }
+      .insert {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow: scroll;
+        padding: 2px;
+      }
+      .editor p::before {
+        background: #ccf;
+        color: red;
+        content: "<p>";
+        font-size: 80%;
+      }
+      .editor p::after {
+        background: #ccf;
+        color: red;
+        content: "</p>";
+        font-size: 80%;
+      }
+      .editor div::before {
+        background: #ccf;
+        color: red;
+        content: "<div>";
+        font-size: 80%;
+      }
+      .editor div::after {
+        background: #ccf;
+        color: red;
+        content: "</div>";
+        font-size: 80%;
+      }
+      .editor > * > * { margin-left: 1rem; }
+      .editor > * > * > * { margin-left: 1rem; }
+      .editor > * > * > * > * { margin-left: 1rem; }
+    </style>
+  </head>
+  <body>
+    <div id="js-editor" class="editor" contenteditable="true"></div>
+    <div class="tools">
+      <div class="events">
+        <h2>preventDefault</h2>
+        <ul>
+          <li><label><input type="checkbox" id="js-prevent-beforeinput">beforeinput</label></li>
+          <li><label><input type="checkbox" id="js-prevent-blur">blur</label></li>
+          <li><label><input type="checkbox" id="js-prevent-compositionend">compositionend</label></li>
+          <li><label><input type="checkbox" id="js-prevent-compositionstart">compositionstart</label></li>
+          <li><label><input type="checkbox" id="js-prevent-compositionupdate">compositionupdate</label></li>
+          <li><label><input type="checkbox" id="js-prevent-focus">focus</label></li>
+          <li><label><input type="checkbox" id="js-prevent-focusin">focusin</label></li>
+          <li><label><input type="checkbox" id="js-prevent-focusout">focusout</label></li>
+          <li><label><input type="checkbox" id="js-prevent-input">input</label></li>
+          <li><label><input type="checkbox" id="js-prevent-keydown">keydown</label></li>
+          <li><label><input type="checkbox" id="js-prevent-keyup">keyup</label></li>
+          <li><label><input type="checkbox" id="js-prevent-paste">paste</label></li>
+          <li><label><input type="checkbox" id="js-prevent-selectstart">selectstart</label></li>
+          <li><label><input type="checkbox" id="js-prevent-selectionchange">selectionchange</label></li>
+        </ul>
+      </div>
+      <div class="insert">
+        <label><input type="checkbox" id="js-use-exec-command">use execCommand('InsertHTML')</label>
+        <button type="button" id="js-insert">insert</button>
+        <textarea id="js-insert-text"></textarea>
+      </div>
+    </div>
+  </body>
+</html>
